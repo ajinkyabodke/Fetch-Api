@@ -9,12 +9,9 @@ function getData() {
     .then((response) => {
       if (response.ok) {
         assignmentId = response.headers.get("x-assignment-id");
-        return response.json();
-      } else if (response.status === 500) {
-        console.warn("Status : HTTP 500 . Retrying..."); 
-        return getData(); //can add a limit to number of retries if needed
+        return response.json(); // Parse response as JSON
       } else {
-        throw new Error("Error fetching data");
+        throw new Error("Error fetching data"); // Handle failure
       }
     })
     .then((data) => {
