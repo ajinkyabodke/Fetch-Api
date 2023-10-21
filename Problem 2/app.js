@@ -1,7 +1,7 @@
 function getData() {
   let assignmentId;
   fetch(
-    "https://one00x-data-analysis.onrender.com/assignment?url=ajinkyabodke678@gmail.com",
+    "https://one00x-data-analysis.onrender.com/assignment?email=ajinkyabodke678@gmail.com",
     {
       method: "GET",
     }
@@ -11,7 +11,7 @@ function getData() {
         assignmentId = response.headers.get("x-assignment-id");
         return response.json();
       } else if (response.status === 500) {
-        console.warn("Status : HTTP 500 . Retrying..."); 
+        console.warn("Status : HTTP 500 . Retrying...");
         return getData(); //can add a limit to number of retries if needed
       } else {
         throw new Error("Error fetching data");
@@ -37,7 +37,7 @@ function findWordCount(jargons, assignmentId) {
     }
     return acc;
   }, {});
-
+  console.log(wordCount);
   findMostUsedWord(wordCount, assignmentId);
 }
 
